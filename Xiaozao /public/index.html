@@ -1,0 +1,142 @@
+
+
+<!-- To-do list and progress:
+
+- Horizontal view: looks decent when you rotate the phone, but too big in vertical view
+- List of comments: Can't apply random comments to the html
+- Outlook of the elements: I plan to add a bit effect to the buttons
+- (?!) pCount and nCount: It worked last time but after I made some edits today, it doesn't work anymore -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Serial Test Output</title>
+	<!-- this tells a mobile browser that this is a site designed to work for a small screen size -->
+	<meta name="viewport" content="width=device-height, height=device-width, initial-scale=0.6" />
+	<style>
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+			background-image: img src="/live.mjpeg" id="webcam"
+        }
+		button {
+			font-size: 36px;
+			padding: 10px;
+		}
+        
+        #webcam {
+            max-width: 100%;
+            max-height: 100%;
+			/* transform: rotate(90deg); */
+			/* display: flex;
+            align-items: center;
+            justify-content: center; */
+        }
+		#top-container {
+			text-align: left;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+		#myDiv {
+			text-align: center;
+			/* position: absolute; */
+		}
+
+    </style>
+</head>
+<body>
+
+	<div id="webcam-container">
+		<div id="webcam">
+		  
+		  <img src="/live.mjpeg">
+		  <div id="top-container">
+			<button id="pCom"; style="background-color:#DEF5E5; color:#829460; border-color:#DEF5E5" >pCom</button><br>
+			<button id="nCom"; style="background-color:#EEEEEE; color:#CF0A0A; border-color:#EEEEEE" >nCom</button><br>
+	
+			<p id="pCount"></p>
+		  	<p id="nCount"></p>
+		  </div>
+		  <!-- <div id = "myDiv">
+			<img id = "myImage" src = "icon.png">
+		  </div><br> -->
+		  
+		  
+		</div>
+	  </div>
+
+
+
+	<script>
+		let pComments = [
+			"You are beautiful and talented!",
+			"I like your style :)",
+			"You are so good at taking pictures!"
+		]
+
+		let nComments = [
+			"Hmm... You looks wierd today",
+			"I don't like your style.",
+			"Why did he become famous?"
+		]
+// *** -Trying to select random comments from the list but failed- **************
+		// let i = Math.random(3);
+		// let j = Math.random(3);
+		// console.log(i);
+		// document.getElementById("pCom").innerHTML = pComments[i];
+		// document.getElementById("nCom").innerHTML = nComments[j];
+
+
+
+
+// *** -Trying to display an icon for 5 seconds- *******************
+		// setTimeout(function(){
+   		// 	document.getElementById("myDiv").style.display="none";
+		// }, 5000);  
+
+// *** -refresh the number of comments once a second- *******************
+		setInterval(async function() {
+			let pCount = await fetch('/count/positive', {
+				cache: 'no-cache'
+			});
+			let nCount = await fetch('/count/negative', {
+				cache: 'no-cache'
+			});
+			// let number = await response.json();
+			
+			pCount = await pCount.text();
+			nCount = await nCount.text();
+
+			document.getElementById("pCount").innerHTML = "Good comments: " + pCount;
+			document.getElementById("nCount").innerHTML = "Bad comments: " + nCount;
+		}, 1000);
+
+
+// *** -Send out 0/1- ***********************************************************
+		let goodButton = document.getElementById('good');
+		goodButton.addEventListener('click', function() {
+			
+			fetch('/serial/out/1', {
+				cache: 'no-cache'
+			});
+		});
+
+		let badButton = document.getElementById('bad');
+		badButton.addEventListener('click', function() {
+			
+			fetch('/serial/out/0', {
+				cache: 'no-cache'
+			});
+		});
+
+		
+	</script>
+</body>
+</html>
