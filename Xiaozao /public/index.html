@@ -122,6 +122,9 @@
 			fetch('/serial/out/1', {
 				cache: 'no-cache'
 			});
+
+			let randomP = Math.floor(Math.random() * pComments.length);
+			document.getElementById("pCom").innerHTML = pComments[randomP];
 		});
 
 		let badButton = document.getElementById('nCom');
@@ -130,6 +133,9 @@
 			fetch('/serial/out/0', {
 				cache: 'no-cache'
 			});
+
+			let randomN = Math.floor(Math.random() * nComments.length);
+			document.getElementById("nCom").innerHTML = nComments[randomN];
 		});
 
 		
