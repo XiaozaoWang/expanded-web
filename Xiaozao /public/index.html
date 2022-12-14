@@ -86,15 +86,11 @@
 			"I don't like your style.",
 			"Why did he become famous?"
 		]
-// *** -Trying to select random comments from the list but failed- **************
-		// let i = Math.random(3);
-		// let j = Math.random(3);
-		// console.log(i);
-		// document.getElementById("pCom").innerHTML = pComments[i];
-		// document.getElementById("nCom").innerHTML = nComments[j];
 
-
-
+		let randomP = Math.floor(Math.random() * pComments.length);
+		let randomN = Math.floor(Math.random() * nComments.length);
+		document.getElementById("pCom").innerHTML = pComments[randomP];
+		document.getElementById("nCom").innerHTML = nComments[randomN];
 
 // *** -Trying to display an icon for 5 seconds- *******************
 		// setTimeout(function(){
