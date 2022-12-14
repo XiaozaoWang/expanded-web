@@ -51,23 +51,32 @@ app.all('/count/negative', function(req, res) {
 //   });
 // });
 
-app.all('/serial/out/*', function(req, res) {
-  // assume frontend is sending 0 and 1
+app.all('/positive/*', function(req, res) {
   let out = req.params[0];
   console.log(req.ip + ' receives: ' + out);
-  if (out == '0') {
-    child_process.spawn('say', ['from' + req.ip + 'You are not worth it.'] );
-    negative_count++;
-  } else if (out == '1') {
-    child_process.spawn('say', ['from' + req.ip + 'You are beautiful and talented.'] );
-    positive_count++;
-  }
-  console.log(positive_count,',,,',negative_count);
-
+  child_process.spawn('say', ['from' + req.ip + ' ' + out] );
+  positive_count++;
+  console.log(positive_count, negative_count);
 
   if (arduino) {                                    // if we have an open serial connection:
-    arduino.write(out + '\n');                      // send what we got from the browser
-    console.log(req.ip + ' made me send to Arduino: ' + out);
+    arduino.write('1\n');                      // send what we got from the browser
+    console.log(req.ip + ' made me send to Arduino: 1');
+  } else {
+    console.log('No Arduino connected');
+  }
+  res.end();
+});
+
+app.all('/negative/*', function(req, res) {
+  let out = req.params[0];
+  console.log(req.ip + ' receives: ' + out);
+  child_process.spawn('say', ['from' + req.ip + ' ' + out] );
+  negative_count++;
+  console.log(positive_count, negative_count);
+
+  if (arduino) {                                    // if we have an open serial connection:
+    arduino.write('0\n');                      // send what we got from the browser
+    console.log(req.ip + ' made me send to Arduino: 0');
   } else {
     console.log('No Arduino connected');
   }

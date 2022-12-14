@@ -119,7 +119,7 @@
 		let goodButton = document.getElementById('pCom');
 		goodButton.addEventListener('click', function() {
 			
-			fetch('/serial/out/1', {
+			fetch('/positive/' + this.innerHTML, {
 				cache: 'no-cache'
 			});
 
@@ -130,7 +130,7 @@
 		let badButton = document.getElementById('nCom');
 		badButton.addEventListener('click', function() {
 			
-			fetch('/serial/out/0', {
+			fetch('/negative/' + this.innerHTML, {
 				cache: 'no-cache'
 			});
 
