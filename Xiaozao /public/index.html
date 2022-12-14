@@ -116,7 +116,7 @@
 
 
 // *** -Send out 0/1- ***********************************************************
-		let goodButton = document.getElementById('good');
+		let goodButton = document.getElementById('pCom');
 		goodButton.addEventListener('click', function() {
 			
 			fetch('/serial/out/1', {
@@ -124,7 +124,7 @@
 			});
 		});
 
-		let badButton = document.getElementById('bad');
+		let badButton = document.getElementById('nCom');
 		badButton.addEventListener('click', function() {
 			
 			fetch('/serial/out/0', {
