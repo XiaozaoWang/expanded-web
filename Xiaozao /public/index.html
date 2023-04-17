@@ -14,7 +14,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Serial Test Output</title>
+	<title>Leave a comment on the social media</title>
 	<!-- this tells a mobile browser that this is a site designed to work for a small screen size -->
 	<meta name="viewport" content="width=device-height, height=device-width, initial-scale=0.6" />
 	<style>
@@ -41,9 +41,14 @@
 		#top-container {
 			text-align: left;
 			position: absolute;
-			top: 0px;
-			left: 0px;
+			font-size: 22px;
+			top: 3px;
+			left:5px;
 		}
+		/* #heading {
+			text-align: center;
+			vertical-align: middle; 
+		} */
 		#myDiv {
 			text-align: center;
 			/* position: absolute; */
@@ -54,13 +59,15 @@
 <body>
 
 	<div id="webcam-container">
+		
 		<div id="webcam">
 		  
 		  <img src="/live.mjpeg">
+		  
 		  <div id="top-container">
+			<!-- <p id="heading">Leave a comment on the social media</p> -->
 			<button id="pCom"; style="background-color:#DEF5E5; color:#829460; border-color:#DEF5E5" >pCom</button><br>
 			<button id="nCom"; style="background-color:#EEEEEE; color:#CF0A0A; border-color:#EEEEEE" >nCom</button><br>
-	
 			<p id="pCount"></p>
 		  	<p id="nCount"></p>
 		  </div>
@@ -136,6 +143,9 @@
 
 			let randomN = Math.floor(Math.random() * nComments.length);
 			document.getElementById("nCom").innerHTML = nComments[randomN];
+
+
+
 		});
 
 		
