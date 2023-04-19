@@ -1,0 +1,39 @@
+
+[2023-4-18 19:53:38] ::1 receives: You are beautiful and talented! +
+[2023-4-18 19:53:47] ::1 receives: I don't like your style. -
+[2023-4-18 19:54:29] ::1 receives: You are beautiful and talented! +
+[2023-4-18 19:54:33] ::1 receives: I don't like your style. -
+[2023-4-18 19:56:17] ::1 receives: Why did he become famous -
+[2023-4-18 20:13:7] ::1 receives: You are so good at taking selfie! +
+[2023-4-18 20:13:13] ::1 receives: Hmm... You looks wierd today -
+[2023-4-18 20:13:13] ::1 receives: I can't believe how bad this is. -
+[2023-4-18 20:22:52] ::1 receives: I don't like your style. -
+[2023-4-19 0:19:0] ::1 receives: Your smile is infectious! +
+[2023-4-19 0:19:10] ::1 receives: This is a complete waste of time. -
+[2023-4-19 0:19:19] ::1 receives: I don't like this at all. -
+[2023-4-19 0:19:25] ::1 receives: I can't believe how bad this is. -
+[2023-4-19 0:19:37] ::1 receives: I like your style :) +
+[2023-4-19 0:19:43] ::1 receives: Your smile is infectious! +
+[2023-4-19 17:16:42] ::1 receives: I can't believe how bad this is. -
+[2023-4-19 17:16:43] ::1 receives: I like your style :) +
+[2023-4-19 17:16:47] ::1 receives: Your smile is infectious! +
+[2023-4-19 17:17:7] ::1 receives: I don't like this at all. -
+[2023-4-19 17:32:58] ::ffff:10.209.87.75 receives: I don't like this at all. -
+[2023-4-19 19:58:43] ::1 receives: Your confidence shines through in every photo. +
+[2023-4-19 19:58:50] ::1 receives: You look amazing! +
+[2023-4-19 19:58:50] ::1 receives: You look amazing! +
+[2023-4-19 19:58:50] ::1 receives: You are so good at taking selfie! +
+[2023-4-19 19:58:51] ::1 receives: You are so good at taking selfie! +
+[2023-4-19 19:58:51] ::1 receives: Your smile is infectious! +
+[2023-4-19 19:58:51] ::1 receives: Your smile is infectious! +
+[2023-4-19 19:59:3] ::1 receives: Your smile is infectious! +
+[2023-4-19 19:59:3] ::1 receives: I like your style :) +
+[2023-4-19 19:59:3] ::1 receives: You look amazing! +
+[2023-4-19 19:59:10] ::1 receives: Hmm... You looks wierd today -
+[2023-4-19 19:59:10] ::1 receives: This is a complete waste of time. -
+[2023-4-19 19:59:10] ::1 receives: I don't like this at all. -
+[2023-4-19 19:59:56] ::1 receives: I can't believe how bad this is. -
+[2023-4-19 19:59:57] ::1 receives: I don't like this at all. -
+[2023-4-19 20:0:9] ::1 receives: Hmm... You looks wierd today -
+[2023-4-19 20:0:18] ::1 receives: I don't like this at all. -
+[2023-4-19 20:1:2] ::1 receives: You are so good at taking selfie! +

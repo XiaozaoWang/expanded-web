@@ -1,11 +1,12 @@
-let express = require('express');
+let express = require('express'); //
 let webcam_mjpeg = require('./webcam_mjpeg');
 let { SerialPort } = require('serialport');         // a module for talking serial
-let app = express();
+let app = express(); //
 let port = 3000;
-let arduino = null; 
+let arduino = null;
 let child_process = require('child_process');
 const { isTypedArray } = require('util/types');
+const fs = require('fs');
 
 if (process.platform == 'darwin') {
 
@@ -30,13 +31,13 @@ let negative_count = 0;
 
 
 
-
+// send the most updated counts to html
 // ********************************************************************************************
-app.all('/count/positive', function(req, res) {
+app.all('/count/positive', function (req, res) {
   res.send(positive_count.toString());
 });
 
-app.all('/count/negative', function(req, res) {
+app.all('/count/negative', function (req, res) {
   res.send(negative_count.toString());
 });
 // ********************************************************************************************
@@ -44,19 +45,27 @@ app.all('/count/negative', function(req, res) {
 
 
 
-// app.all('/count', function(req, res) {
-//   res.json({
-//     'positive': positive_count,
-//     'negative': negative_count
-//   });
-// });
-
-app.all('/positive/*', function(req, res) {
+// '/positive/*' is the request from the html
+// here, we need to do something in javascript, but no need to send things back to html
+app.all('/positive/*', function (req, res) {
   let out = req.params[0];
   console.log(req.ip + ' receives: ' + out);
-  child_process.spawn('say', ['from' + req.ip + ' ' + out] );
+  child_process.spawn('say', ['from' + req.ip + ' ' + out]);
   positive_count++;
   console.log(positive_count, negative_count);
+
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1; // Note that getMonth() returns a zero-based index.
+  const day = now.getDate();
+  const hours = now.getHours();
+  const minutes = now.getMinutes();
+  const seconds = now.getSeconds();
+  time = '[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']';
+  let record = time + ' ' + req.ip + ' receives: ' + out + ' +\n';
+  fs.appendFileSync('output.txt', record);
+  console.log('Line has been written to output.txt');
+
 
   if (arduino) {                                    // if we have an open serial connection:
     arduino.write('1\n');                      // send what we got from the browser
@@ -67,12 +76,24 @@ app.all('/positive/*', function(req, res) {
   res.end();
 });
 
-app.all('/negative/*', function(req, res) {
+app.all('/negative/*', function (req, res) {
   let out = req.params[0];
   console.log(req.ip + ' receives: ' + out);
-  child_process.spawn('say', ['from' + req.ip + ' ' + out] );
+  child_process.spawn('say', ['from' + req.ip + ' ' + out]);
   negative_count++;
   console.log(positive_count, negative_count);
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1; // Note that getMonth() returns a zero-based index.
+  const day = now.getDate();
+  const hours = now.getHours();
+  const minutes = now.getMinutes();
+  const seconds = now.getSeconds();
+  time = '[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']';
+  let record = time + ' ' + req.ip + ' receives: ' + out + ' -\n';
+  fs.appendFileSync('output.txt', record);
+  console.log('Line has been written to output.txt');
+
 
   if (arduino) {                                    // if we have an open serial connection:
     arduino.write('0\n');                      // send what we got from the browser
@@ -88,13 +109,9 @@ app.use(express.static('public'));           // html
 
 tryConnectArduino();
 
-app.listen(port, function() {
+app.listen(port, function () {
   console.log('Example app listening at http://localhost:' + port);
 })
-
-
-
-
 
 
 async function tryConnectArduino() {

@@ -1,5 +1,3 @@
-
-
 <!-- To-do list and progress:
 
 - Horizontal view: looks decent when you rotate the phone, but too big in vertical view
@@ -7,44 +5,45 @@
 - Outlook of the elements: I plan to add a bit effect to the buttons
 - (?!) pCount and nCount: It worked last time but after I made some edits today, it doesn't work anymore -->
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<title>Leave a comment on the social media</title>
 	<!-- this tells a mobile browser that this is a site designed to work for a small screen size -->
 	<meta name="viewport" content="width=device-height, height=device-width, initial-scale=0.6" />
 	<style>
-        body {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
+		body {
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			padding: 0;
 			background-image: img src="/live.mjpeg" id="webcam"
-        }
+		}
+
 		button {
 			font-size: 36px;
 			padding: 10px;
 		}
-        
-        #webcam {
-            max-width: 100%;
-            max-height: 100%;
+
+		#webcam {
+			max-width: 100%;
+			max-height: 100%;
 			/* transform: rotate(90deg); */
 			/* display: flex;
             align-items: center;
             justify-content: center; */
-        }
+		}
+
 		#top-container {
 			text-align: left;
 			position: absolute;
 			font-size: 22px;
 			top: 3px;
-			left:5px;
+			left: 5px;
 		}
+
 		/* #heading {
 			text-align: center;
 			vertical-align: middle; 
@@ -54,44 +53,127 @@
 			/* position: absolute; */
 		}
 
-    </style>
+		.popup-container {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+			display: none;
+		}
+
+		/* Style for pop-up content */
+		.popup-content {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 50%;
+			height: 50%;
+			transform: translate(-50%, -50%);
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+		}
+
+		#pop-head {
+			text-align: center;
+			font-size: 36px;
+		}
+
+		#pop-content {
+			font-size: 30px;
+		}
+
+		/* Style for close button */
+		.close-btn {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			cursor: pointer;
+		}
+
+		/* Style for button */
+		.open-btn {
+			position: fixed;
+			bottom: 20px;
+			right: 20px;
+			width: 60px;
+			height: 60px;
+			border-radius: 50%;
+			background-color: rgb(19, 173, 50);
+			color: white;
+			font-size: 36px;
+			cursor: pointer;
+		}
+	</style>
 </head>
+
 <body>
 
 	<div id="webcam-container">
-		
+
 		<div id="webcam">
-		  
-		  <img src="/live.mjpeg">
-		  
-		  <div id="top-container">
-			<!-- <p id="heading">Leave a comment on the social media</p> -->
-			<button id="pCom"; style="background-color:#DEF5E5; color:#829460; border-color:#DEF5E5" >pCom</button><br>
-			<button id="nCom"; style="background-color:#EEEEEE; color:#CF0A0A; border-color:#EEEEEE" >nCom</button><br>
-			<p id="pCount"></p>
-		  	<p id="nCount"></p>
-		  </div>
-		  <!-- <div id = "myDiv">
-			<img id = "myImage" src = "icon.png">
-		  </div><br> -->
-		  
-		  
+
+			<img src="/live.mjpeg">
+
+			<div id="top-container">
+				<!-- <p id="heading">Leave a comment on the social media</p> -->
+				<button id="pCom" ;
+					style="background-color:#DEF5E5; color:#829460; border-color:#DEF5E5">pCom</button><br>
+				<button id="nCom" ;
+					style="background-color:#EEEEEE; color:#CF0A0A; border-color:#EEEEEE">nCom</button><br>
+				<p id="pCount"></p>
+				<p id="nCount"></p>
+
+			</div>
+			<div id="bottom container">
+				<button class='open-btn' onclick="showPopup()">?</button>
+			</div>
+
+			<div class="popup-container">
+				<div class="popup-content">
+					<h2 id="pop-head">Instruction</h2>
+					<p id="pop-content">Hi! Check out <a
+							href="https://wp.nyu.edu/nyushanghai-xiaozao/2022/12/20/project-b-networked-installation/">my
+							blog</a> for more information.</p>
+					<span class="close-btn" onclick="hidePopup()">&times;</span>
+				</div>
+			</div>
+
+
 		</div>
-	  </div>
+	</div>
 
 
 
 	<script>
+		// *** -popup window- *******************
+		function showPopup() {
+			document.querySelector('.popup-container').style.display = 'block';
+		}
+
+		function hidePopup() {
+			document.querySelector('.popup-container').style.display = 'none';
+		}
+
 		let pComments = [
-			"You are beautiful and talented!",
+			"You look amazing!",
 			"I like your style :)",
-			"You are so good at taking pictures!"
+			"You are so good at taking selfie!",
+			"Your smile is infectious!",
+			"Your confidence shines through in every photo.",
+			"You always inspire me with your posts!"
+
 		]
 
 		let nComments = [
 			"Hmm... You looks wierd today",
 			"I don't like your style.",
-			"Why did he become famous?"
+			"I can't believe how bad this is.",
+			"I don't like this at all.",
+			"This is a complete waste of time."
 		]
 
 		let randomP = Math.floor(Math.random() * pComments.length);
@@ -99,13 +181,13 @@
 		document.getElementById("pCom").innerHTML = pComments[randomP];
 		document.getElementById("nCom").innerHTML = nComments[randomN];
 
-// *** -Trying to display an icon for 5 seconds- *******************
+		// *** -Trying to display an icon for 5 seconds- *******************
 		// setTimeout(function(){
-   		// 	document.getElementById("myDiv").style.display="none";
+		// 	document.getElementById("myDiv").style.display="none";
 		// }, 5000);  
 
-// *** -refresh the number of comments once a second- *******************
-		setInterval(async function() {
+		// *** -refresh the number of comments once a second- *******************
+		setInterval(async function () {
 			let pCount = await fetch('/count/positive', {
 				cache: 'no-cache'
 			});
@@ -113,7 +195,7 @@
 				cache: 'no-cache'
 			});
 			// let number = await response.json();
-			
+
 			pCount = await pCount.text();
 			nCount = await nCount.text();
 
@@ -122,10 +204,10 @@
 		}, 1000);
 
 
-// *** -Send out 0/1- ***********************************************************
+		// *** -Send out 0/1- ***********************************************************
 		let goodButton = document.getElementById('pCom');
-		goodButton.addEventListener('click', function() {
-			
+		goodButton.addEventListener('click', function () {
+
 			fetch('/positive/' + this.innerHTML, {
 				cache: 'no-cache'
 			});
@@ -135,8 +217,8 @@
 		});
 
 		let badButton = document.getElementById('nCom');
-		badButton.addEventListener('click', function() {
-			
+		badButton.addEventListener('click', function () {
+
 			fetch('/negative/' + this.innerHTML, {
 				cache: 'no-cache'
 			});
@@ -148,7 +230,8 @@
 
 		});
 
-		
+
 	</script>
 </body>
+
 </html>
