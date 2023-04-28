@@ -69,7 +69,7 @@
 			top: 50%;
 			left: 50%;
 			width: 50%;
-			height: 50%;
+			height: 75%;
 			transform: translate(-50%, -50%);
 			background-color: #fff;
 			padding: 20px;
@@ -79,11 +79,11 @@
 
 		#pop-head {
 			text-align: center;
-			font-size: 36px;
+			font-size: 32px;
 		}
 
-		#pop-content {
-			font-size: 30px;
+		.pop-content {
+			font-size: 22px;
 		}
 
 		/* Style for close button */
@@ -97,7 +97,7 @@
 		/* Style for button */
 		.open-btn {
 			position: fixed;
-			bottom: 20px;
+			top: 20px;
 			right: 20px;
 			width: 60px;
 			height: 60px;
@@ -135,9 +135,14 @@
 			<div class="popup-container">
 				<div class="popup-content">
 					<h2 id="pop-head">Instruction</h2>
-					<p id="pop-content">Hi! Check out <a
+					<p class="pop-content">1. Rotate your phone to vertical view!</p>
+					<p class="pop-content">2. Press the buttons to leave a positive or negative comment on the webpage.</p>
+					<p class="pop-content">3. The physical installation is monitored by a web camera. See how your comment contribute to changing the virtual and physical environment!</p>
+					<p class="pop-content">4. The installation is in the IMA exhibition next to North-East 3F elevator.</p>
+					<p class="pop-content">Check out <a
 							href="https://wp.nyu.edu/nyushanghai-xiaozao/2022/12/20/project-b-networked-installation/">my
-							blog</a> for more information.</p>
+							blog</a> for more explanations!</p>
+					<p class="pop-content"> Your feedback is appreciated by Xiaozao Wang (xw2194@nyu.edu)</p>
 					<span class="close-btn" onclick="hidePopup()">&times;</span>
 				</div>
 			</div>
